@@ -1,1 +1,104 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+  font-family: Arial, sans-serif;
+  min-width: 320px !important;
+}
+
+.btn.btn-170 {
+  width: 170px;
+}
+
+.btn.btn-156 {
+  width: 156px;
+}
+
+.slick-arrow {
+  position: absolute;
+  top: 50%;
+  z-index: 10;
+  border: 1px solid #076BFF;
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  background-color: #FFFFFF;
+  color: transparent;
+  display: flex;
+  align-items: center;
+  transition: all .5s ease;
+}
+
+.arrow-next {
+  right: 12px;
+}
+
+.arrow-prev {
+  left: 12px;
+}
+
+.arrow-next:before, .arrow-prev:before {
+  position: absolute;
+  height: 15px;
+  width: 15px;
+  border-right: 3px solid #076BFF;
+  border-bottom: 3px solid #076BFF;
+  z-index: 100;
+  transition: all .5s ease;
+}
+
+.arrow-next:before {
+  content: "";
+  left: 8px;
+  transform: rotate(-45deg);
+}
+
+.arrow-prev:before {
+  content: "";
+  left: 15px;
+  transform: rotate(135deg);
+}
+
+.slick-arrow:hover {
+  border: 1px solid #fff;
+  background-color: #076BFF;
+}
+
+.slick-arrow:hover.arrow-next:before,
+.slick-arrow:hover.arrow-prev:before {
+  border-right: 3px solid #fff;
+  border-bottom: 3px solid #fff;
+}
+
+.accordion {
+  max-width: 856px;
+}
+
+.icon-arrow {
+  display: inline-block;
+  content: "";
+  width: 20px;
+  height: 20px;
+  background-image: url("assets/images/chevron-right.svg")!important;
+  background-repeat: no-repeat;
+  background-size: 20px 20px;
+  margin-left: 20px;
+  transition: all .3s ease;
+}
+
+.icon-arrow-up,
+.ui-accordion-header:hover .icon-arrow-up {
+  transform: rotate(-90deg);
+}
+
+.icon-arrow-down,
+.ui-accordion-header:hover .icon-arrow-down {
+  transform: rotate(90deg);
+}
+
+.order__form {
+  max-width: 636px;
+}
+
+#orderSection .alert-success  {
+  max-width: 636px;
+  margin: 0 auto;
+}
+
