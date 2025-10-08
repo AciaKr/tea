@@ -1,80 +1,23 @@
 <section class="products py-5 mx-1 wow animate__backInLeft">
   <h2 class="title text-center fw-bold mb-4">Наши чайные коллекции</h2>
   <div class="row m-0 pb-4 gy-4">
-    <div class="col-lg-4 col-md-6">
+    <div class="col-lg-4 col-md-6" *ngFor="let product of products">
       <div class="card rounded-1">
-        <a class="popup-link" href="../../../../assets/images/image-1.png" title="Детокс чай лайм">
-          <img src="../../../../assets/images/image-1.png" class="card-img-top" alt="Детокс чай лайм">
+        <a class="popup-link" href="/catalog/{{ product.id }}" title="{{ product.title }}">
+          <img src="{{ product.image }}" class="card-img-top" alt="{{ product.title }}">
         </a>
         <div class="card-body px-4 text-center text-md-start">
-          <h5 class="card-title fw-bold">Детокс чай лайм</h5>
-          <p class="card-text">Великолепный чай внесет в вашу жизнь яркие краски и вкус
-            расслабления</p>
-          <a href="#" class="btn btn-primary btn-170 rounded-1 hvr-grow">Подробнее</a>
+          <h5 class="card-title fw-bold">{{ product.title }}</h5>
+          <p class="card-text">{{ product.description | compressText }}</p>
+        </div>
+        <div class="card-footer bg-transparent d-flex justify-content-between align-items-center">
+          <span class="fw-bold fs-4">{{ product.price | currency: 'RUB' :'symbol-narrow': '.0-0'}}</span>
+          <a [routerLink]="['/catalog', product.id ]" class="btn btn-primary btn-170 rounded-1 hvr-grow">Подробнее</a>
         </div>
       </div>
     </div>
-    <div class="col-lg-4 col-md-6">
-      <div class="card rounded-1">
-        <a class="popup-link" href="../../../../assets/images/image-2.png" title="Ягодный чай">
-          <img src="../../../../assets/images/image-2.png" class="card-img-top" alt="Ягодный чай">
-        </a>
-        <div class="card-body px-4 text-center text-md-start">
-          <h5 class="card-title fw-bold">Ягодный чай</h5>
-          <p class="card-text">Нотки ягод позволят вам расслабиться и насладиться великолепием
-            этого чая</p>
-          <a href="#" class="btn btn-primary btn-170 rounded-1 hvr-grow">Подробнее</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-4 col-md-6">
-      <div class="card rounded-1">
-        <a class="popup-link" href="../../../../assets/images/image-3.png" title="Цветочный чай">
-          <img src="../../../../assets/images/image-3.png" class="card-img-top" alt="Цветочный чай">
-        </a>
-        <div class="card-body px-4 text-center text-md-start">
-          <h5 class="card-title fw-bold">Цветочный чай</h5>
-          <p class="card-text">Душистые цветы создают невероятный аромат и наполняют вас
-            энергией</p>
-          <a href="#" class="btn btn-primary btn-170 rounded-1 hvr-grow">Подробнее</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-4 col-md-6">
-      <div class="card rounded-1">
-        <a class="popup-link" href="../../../../assets/images/image-4.png" title="Очищающий чай">
-          <img src="../../../../assets/images/image-4.png" class="card-img-top" alt="Очищающий чай">
-        </a>
-        <div class="card-body px-4 text-center text-md-start">
-          <h5 class="card-title fw-bold">Очищающий чай</h5>
-          <p class="card-text">Бесподобный чай для получения утреннего заряда бодрости</p>
-          <a href="#" class="btn btn-primary btn-170 rounded-1 hvr-grow">Подробнее</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-4 col-md-6">
-      <div class="card rounded-1">
-        <a class="popup-link" href="../../../../assets/images/image-5.png" title="Кислый чай">
-          <img src="../../../../assets/images/image-5.png" class="card-img-top" alt="Кислый чай">
-        </a>
-        <div class="card-body px-4 text-center text-md-start">
-          <h5 class="card-title fw-bold">Кислый чай</h5>
-          <p class="card-text">Кислый чай для настоящих ценителей кислинки во время чаепития</p>
-          <a href="#" class="btn btn-primary btn-170 rounded-1 hvr-grow">Подробнее</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-4 col-md-6">
-      <div class="card rounded-1">
-        <a class="popup-link" href="../../../../assets/images/image-6.png" title="Лимонная мята">
-          <img src="../../../../assets/images/image-6.png" class="card-img-top" alt="Лимонная мята">
-        </a>
-        <div class="card-body px-4 text-center text-md-start">
-          <h5 class="card-title fw-bold">Лимонная мята</h5>
-          <p class="card-text">Смесь лимона с мятой сделает ваш день самым лучшим</p>
-          <a href="#" class="btn btn-primary btn-170 rounded-1 hvr-grow">Подробнее</a>
-        </div>
-      </div>
-    </div>
+  </div>
+  <div *ngIf="loaderShow" class="loader-bg">
+    <div class="loader"></div>
   </div>
 </section>

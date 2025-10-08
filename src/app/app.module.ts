@@ -9,6 +9,8 @@ import { ProductComponent } from './components/pages/product/product.component';
 import { OrderComponent } from './components/pages/order/order.component';
 import { HeaderComponent } from './components/common/header/header.component';
 import { FooterComponent } from './components/common/footer/footer.component';
+import {HttpClientModule} from "@angular/common/http";
+import { CompressTextPipe } from './pipes/compress-text.pipe';
 
 @NgModule({
   declarations: [
@@ -18,11 +20,13 @@ import { FooterComponent } from './components/common/footer/footer.component';
     ProductComponent,
     OrderComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    CompressTextPipe
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
