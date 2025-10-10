@@ -1,36 +1,135 @@
-<section class="order py-4 mx-1 wow animate__bounceInUp" id="orderSection">
-  <h2 class="title text-center fw-bold mb-5">Сделать заказ</h2>
-  <form class="order__form row g-4 mx-auto" id="orderForm">
-    <div class="col-md-4">
-      <label for="inputName" class="form-label text-black">Имя</label>
-      <input type="text" class="form-control rounded-1" id="inputName">
+<section class="order py-4 mx-1 wow animate__bounceInUp">
+  <h1 class="title text-center fw-bold mb-5" *ngIf="isActiveForm">Сделать заказ</h1>
+  <form class="order__form row g-4 mx-auto"
+        *ngIf="isActiveForm"
+        [formGroup]="formOrder"
+        novalidate
+        (ngSubmit)="submit()">
+    <div class="col-md-12">
+      <label for="inputProduct" class="form-label text-black">Товар</label>
+      <input type="text"
+             name="product"
+             class="form-control rounded-1"
+             id="inputProduct"
+             formControlName="product"
+             readonly
+      >
     </div>
     <div class="col-md-4">
-      <label for="inputSurname" class="form-label text-black">Фамилия</label>
-      <input type="text" class="form-control rounded-1" id="inputSurname">
+      <label for="inputUserName" class="form-label text-black">Имя*</label>
+      <input type="text"
+             name="name"
+             class="form-control rounded-1"
+             [class]="{'border-danger': _userName?.invalid && (_userName?.touched || _userName?.dirty)}"
+             id="inputUserName"
+             formControlName="userName">
+      <div *ngIf="_userName?.invalid && (_userName?.touched || _userName?.dirty)" class="small text-danger">
+        <div *ngIf="_userName?.errors?.['required']">
+          Не указано имя
+        </div>
+        <div *ngIf="_userName?.errors?.['pattern']">
+          Поле должно содержать только буквы
+        </div>
+      </div>
     </div>
     <div class="col-md-4">
-      <label for="inputPhone" class="form-label text-black">Телефон</label>
-      <input type="text" class="form-control rounded-1" id="inputPhone">
+      <label for="inputLastName" class="form-label text-black">Фамилия*</label>
+      <input type="text"
+             name="lastName"
+             class="form-control rounded-1"
+             [class]="{'border-danger': _lastName?.invalid && (_lastName?.touched || _lastName?.dirty)}"
+             id="inputLastName"
+             formControlName="lastName">
+      <div *ngIf="_lastName?.invalid && (_lastName?.touched || _lastName?.dirty)" class="small text-danger">
+        <div *ngIf="_lastName?.errors?.['required']">
+          Не указана фамилия
+        </div>
+        <div *ngIf="_lastName?.errors?.['pattern']">
+          Поле должно содержать только буквы
+        </div>
+      </div>
     </div>
-    <div class="col-md-6">
-      <label for="inputCountry" class="form-label text-black">Страна</label>
-      <input type="text" class="form-control rounded-1" id="inputCountry">
+    <div class="col-md-4">
+      <label for="inputPhone" class="form-label text-black">Телефон*</label>
+      <input type="text"
+             name="phone"
+             class="form-control rounded-1"
+             [class]="{'border-danger': _phone?.invalid && (_phone?.touched || _phone?.dirty)}"
+             id="inputPhone"
+             formControlName="phone">
+      <div *ngIf="_phone?.invalid && (_phone?.touched || _phone?.dirty)" class="small text-danger">
+        <div *ngIf="_phone?.errors?.['required']">
+          Не указан телефон
+        </div>
+        <div *ngIf="_phone?.errors?.['pattern']">
+          Поле должно содержать 11 цифр
+        </div>
+      </div>
     </div>
-    <div class="col-md-6">
-      <label for="inputIndex" class="form-label text-black">Индекс</label>
-      <input type="text" class="form-control rounded-1" id="inputIndex">
+    <div class="col-md-12 row px-0 mt-0 g-4 mx-auto" formGroupName="addressDetails">
+      <div class="col-md-6">
+        <label for="inputCountry" class="form-label text-black">Страна*</label>
+        <input type="text"
+               name="country"
+               class="form-control rounded-1"
+               [class]="{'border-danger': _country?.invalid && (_country?.touched || _country?.dirty)}"
+               id="inputCountry"
+               formControlName="country">
+        <div *ngIf="_country?.invalid && (_country?.touched || _country?.dirty)" class="small text-danger">
+            Не указана страна
+        </div>
+      </div>
+      <div class="col-md-6">
+        <label for="inputZip" class="form-label text-black">Индекс*</label>
+        <input type="text"
+               name="zip"
+               class="form-control rounded-1"
+               [class]="{'border-danger': _zip?.invalid && (_zip?.touched || _zip?.dirty)}"
+               id="inputZip"
+               formControlName="zip">
+        <div *ngIf="_zip?.invalid && (_zip?.touched || _zip?.dirty)" class="small text-danger">
+          Не указан индекс
+        </div>
+      </div>
+      <div class="col-12">
+        <label for="inputAddress" class="form-label text-black">Адрес*</label>
+        <input type="text"
+               name="address"
+               class="form-control rounded-1"
+               [class]="{'border-danger': _address?.invalid && (_address?.touched || _address?.dirty)}"
+               id="inputAddress"
+               formControlName="address">
+        <div *ngIf="_address?.invalid && (_address?.touched || _address?.dirty)" class="small text-danger">
+          <div *ngIf="_address?.errors?.['required']">
+            Не указан точный адрес
+          </div>
+          <div *ngIf="_address?.errors?.['pattern']">
+            Поле должно содержать только буквы, цифры, пробелы, - и /
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="col-12">
-      <label for="inputAddress" class="form-label text-black">Адрес</label>
-      <input type="text" class="form-control rounded-1" id="inputAddress">
+    <div class="col-md-12">
+      <label for="inputComment" class="form-label text-black">Комментарий к заказу</label>
+      <textarea name="comment"
+                class="form-control rounded-1"
+                id="inputComment"
+                formControlName="comment"
+      ></textarea>
+    </div>
+    <div class="col-md-12 small">
+      * обязательны к заполнению
     </div>
 
     <div class="col-12">
-      <div id="liveAlertPlaceholder"></div>
-      <button type="submit" class="btn btn-primary btn-156 rounded-1 hvr-grow" id="sendOrder">
-        Отправить
+      <div *ngIf="isErrorResponse"  class="alert alert-danger mt-3" role="alert">Произошла ошибка. Попробуйте еще раз.</div>
+      <button type="submit"
+              class="btn btn-primary btn-156 rounded-1 hvr-grow"
+              [disabled]="!formOrder.valid || isSubmitting"
+      >
+        {{ isSubmitting ? 'Отправка...' : 'Отправить' }}
       </button>
     </div>
   </form>
+  <h1 class="title text-center fw-bold text-primary" *ngIf="!isActiveForm">Спасибо за заказ!</h1>
 </section>

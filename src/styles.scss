@@ -1,6 +1,13 @@
 body {
+  min-height: 100vh;
   font-family: Arial, sans-serif !important;
   min-width: 320px !important;
+}
+
+.wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .btn.btn-170 {
@@ -113,7 +120,6 @@ body {
   justify-content: center;
   background-color: rgba(0, 0, 0, 0.54);
 }
-
 
 .loader {
   color: #076BFF;

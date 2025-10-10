@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import {ProductType} from "../types/product.type";
 import {HttpClient} from "@angular/common/http";
+import {OrderType} from "../types/order.type";
+import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -22,5 +24,9 @@ export class ProductService {
           callback(this.products);
         });
     }
+  }
+
+  public createOrder(data: OrderType): Observable<{ success: number }> {
+    return this.http.post<any>('https://testologia.ru/order-tea', data);
   }
 }

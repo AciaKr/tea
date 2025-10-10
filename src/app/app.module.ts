@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import {HttpClientModule} from "@angular/common/http";
+import {ReactiveFormsModule} from "@angular/forms";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -9,8 +11,8 @@ import { ProductComponent } from './components/pages/product/product.component';
 import { OrderComponent } from './components/pages/order/order.component';
 import { HeaderComponent } from './components/common/header/header.component';
 import { FooterComponent } from './components/common/footer/footer.component';
-import {HttpClientModule} from "@angular/common/http";
 import { CompressTextPipe } from './pipes/compress-text.pipe';
+
 
 @NgModule({
   declarations: [
@@ -27,6 +29,7 @@ import { CompressTextPipe } from './pipes/compress-text.pipe';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
