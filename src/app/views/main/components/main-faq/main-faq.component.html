@@ -1,0 +1,16 @@
+<div ngbAccordion [closeOthers]="true" class="py-4 mx-auto">
+  <div ngbAccordionItem *ngFor="let panel of panels; let i = index" [collapsed]="i !== 0">
+    <h2 ngbAccordionHeader>
+      <button type="button" ngbAccordionButton>
+        {{ panel.question }}
+      </button>
+    </h2>
+    <div ngbAccordionCollapse>
+      <div ngbAccordionBody>
+        <ng-template>
+          {{ panel.answer }}
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</div>

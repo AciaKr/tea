@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {ProductService} from "../../../services/product.service";
+import {ProductService} from "../../shared/services/product.service";
 import {ActivatedRoute, Params, Router} from "@angular/router";
 
 @Component({
@@ -90,6 +90,10 @@ export class OrderComponent implements OnInit {
       next: (res: { success: number, message?: string }): void => {
         if (res.success && !res.message) {
           this.isActiveForm = false;
+          setTimeout(() => {
+            this.isActiveForm = true;
+            this.router.navigate(['/']);
+          }, 3000)
         } else {
           this.showTemporaryError();
         }

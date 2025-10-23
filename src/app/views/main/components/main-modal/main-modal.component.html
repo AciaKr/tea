@@ -1,0 +1,12 @@
+<ng-template #promoPopup let-modal>
+  <div class="modal-header border-0">
+    <img src="/assets/images/logo.png" alt="Логотип">
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <h2 class="modal-title fs-5 text-center" id="promoPopupLabel">Посмотрите наши чайные коллекции</h2>
+  </div>
+  <div class="modal-footer justify-content-center border-0">
+    <a type="button" class="btn btn-primary" routerLink="catalog" data-bs-dismiss="modal">Смотреть</a>
+  </div>
+</ng-template>
