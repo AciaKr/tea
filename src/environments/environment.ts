@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  urlAPI: 'https://testologia.ru/'
+  apiUrl: 'https://testologia.ru/'
 };
 
 /*

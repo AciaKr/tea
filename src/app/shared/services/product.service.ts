@@ -18,7 +18,7 @@ export class ProductService {
     if (this.isLoaded) {
       callback(this.products);
     } else {
-      this.http.get<ProductType[]>(environment.urlAPI + 'tea')
+      this.http.get<ProductType[]>(environment.apiUrl + 'tea')
         .subscribe((data: ProductType[]): void => {
           this.products = data;
           this.isLoaded = true;
@@ -28,6 +28,6 @@ export class ProductService {
   }
 
   public createOrder(data: OrderType): Observable<{ success: number }> {
-    return this.http.post<any>(environment.urlAPI + 'order-tea', data);
+    return this.http.post<any>(environment.apiUrl + 'order-tea', data);
   }
 }
