@@ -3,7 +3,7 @@
   <div class="row m-0 pb-4 gy-4">
     <div class="col-lg-4 col-md-6" *ngFor="let product of products">
       <div class="card rounded-1">
-        <a class="popup-link" href="/catalog/{{ product.id }}" title="{{ product.title }}">
+        <a class="popup-link" [routerLink]="['/catalog', product.id ]" title="{{ product.title }}">
           <img src="{{ product.image }}" class="card-img-top" alt="{{ product.title }}">
         </a>
         <div class="card-body px-4 text-center text-md-start">
